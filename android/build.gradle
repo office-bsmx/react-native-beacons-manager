@@ -29,5 +29,5 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.facebook.react:react-native:+"
-    implementation 'org.altbeacon:android-beacon-library:2.9.2'
+    implementation 'org.altbeacon:android-beacon-library:2.19.6'
 }
