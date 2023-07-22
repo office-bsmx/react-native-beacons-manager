@@ -159,35 +159,9 @@
             }
             callback.invoke(array);
         }
-    
-        /***********************************************************************************************
-         * BeaconConsumer
-         **********************************************************************************************/
-    //    @Override
-    //    public void onBeaconServiceConnect() {
-    //        Log.v(LOG_TAG, "onBeaconServiceConnect");
-    //
-    //        // deprecated since v2.9 (see github: https://github.com/AltBeacon/android-beacon-library/releases/tag/2.9)
-    //        // mBeaconManager.setMonitorNotifier(mMonitorNotifier);
-    //        // mBeaconManager.setRangeNotifier(mRangeNotifier);
-    //
-    //        mBeaconManager.addMonitorNotifier(mMonitorNotifier);
-    //        mBeaconManager.addRangeNotifier(mRangeNotifier);
-    //    }
         public Context getApplicationContext() {
             return mApplicationContext;
         }
-    
-    //    @Override
-    //    public void unbindService(ServiceConnection serviceConnection) {
-    //        mApplicationContext.unbindService(serviceConnection);
-    //    }
-    
-    //    @Override
-    //    public boolean bindService(Intent intent, ServiceConnection serviceConnection, int i) {
-    ////        PendingIntent pendingIntent = PendingIntent.getActivity(mApplicationContext, i, intent,PendingIntent.FLAG_IMMUTABLE);
-    //        return mApplicationContext.bindService(intent, serviceConnection, i);
-    //    }
     
         /***********************************************************************************************
          * Monitoring
@@ -209,32 +183,6 @@
                 // reject.invoke(e.getMessage());
             }
         }
-    
-    //    private MonitorNotifier mMonitorNotifier = new MonitorNotifier() {
-    //        @Override
-    //        public void didEnterRegion(Region region) {
-    //            sendEvent(mReactContext, "regionDidEnter", createMonitoringResponse(region));
-    //        }
-    //
-    //        @Override
-    //        public void didExitRegion(Region region) {
-    //            sendEvent(mReactContext, "regionDidExit", createMonitoringResponse(region));
-    //        }
-    //
-    //        @Override
-    //        public void didDetermineStateForRegion(int i, Region region) {
-    //
-    //        }
-    //    };
-    
-    //    private WritableMap createMonitoringResponse(Region region) {
-    //        WritableMap map = new WritableNativeMap();
-    //        map.putString("identifier", region.getUniqueId());
-    //        map.putString("uuid", region.getId1().toString());
-    //        map.putInt("major", region.getId2() != null ? region.getId2().toInt() : 0);
-    //        map.putInt("minor", region.getId3() != null ? region.getId3().toInt() : 0);
-    //        return map;
-    //    }
     
         @ReactMethod
         public void stopMonitoring(String regionId, String beaconUuid, int minor, int major, Callback resolve, Callback reject) {
@@ -269,15 +217,6 @@
                 Log.e(LOG_TAG, "startRanging, error: ", e);
             }
         }
-    
-    //    private RangeNotifier mRangeNotifier = new RangeNotifier() {
-    //        @Override
-    //        public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
-    //            Log.d(LOG_TAG, "rangingConsumer didRangeBeaconsInRegion, beacons: " + beacons.toString());
-    //            Log.d(LOG_TAG, "rangingConsumer didRangeBeaconsInRegion, region: " + region.toString());
-    //            sendEvent(mReactContext, "beaconsDidRange", createRangingResponse(beacons, region));
-    //        }
-    //    };
     
         private WritableMap createRangingResponse(Collection<Beacon> beacons, Region region) {
             WritableMap map = new WritableNativeMap();
