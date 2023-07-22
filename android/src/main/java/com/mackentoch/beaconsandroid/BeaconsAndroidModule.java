@@ -193,7 +193,7 @@
          * Monitoring
          **********************************************************************************************/
         @ReactMethod
-        public void startMonitoring(String regionId, String beaconUuid, int minor, int major, Callback resolve, Callback reject) {
+        public void startMonitoring(String regionId, String beaconUuid, Integer minor, Integer major) {
             Log.d(LOG_TAG, "startMonitoring, monitoringRegionId: " + regionId + ", monitoringBeaconUuid: " + beaconUuid + ", minor: " + minor + ", major: " + major);
             try {
                 Region region = createRegion(
@@ -203,10 +203,10 @@
                   String.valueOf(major).equals("-1") ? "" : String.valueOf(major)
                 );
                 mBeaconManager.startMonitoring(region);
-                resolve.invoke();
+                // resolve.invoke();
             } catch (Exception e) {
                 Log.e(LOG_TAG, "startMonitoring, error: ", e);
-                reject.invoke(e.getMessage());
+                // reject.invoke(e.getMessage());
             }
         }
     
@@ -260,15 +260,13 @@
          * Ranging
          **********************************************************************************************/
         @ReactMethod
-        public void startRanging(String regionId, String beaconUuid, Callback resolve, Callback reject) {
+        public void startRanging(String regionId, String beaconUuid) {
             Log.d(LOG_TAG, "startRanging, rangingRegionId: " + regionId + ", rangingBeaconUuid: " + beaconUuid);
             try {
                 Region region = createRegion(regionId, beaconUuid);
                 mBeaconManager.startRangingBeacons(region);
-                resolve.invoke();
             } catch (Exception e) {
                 Log.e(LOG_TAG, "startRanging, error: ", e);
-                reject.invoke(e.getMessage());
             }
         }
     
